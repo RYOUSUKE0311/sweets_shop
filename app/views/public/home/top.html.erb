@@ -1,2 +1,17 @@
-<h1>Public::Home#top</h1>
-<p>Find me in app/views/public/home/top.html.erb</p>
+<h1 class="mt-2">sweets_shop</h1>
+<p>xxxのxxxをxxxxできます。</p>
+<div class="border-bottom"></div>
+
+<h2 class="my-4">スイーツショップの新着投稿</h2>
+<% if current_user %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= render "public/posts/form", post: @post %>
+    </div>
+    <div class="col-md-8">
+      <%= render "public/posts/posts", posts: @posts %>
+    </div>
+  </div>
+<% else %>
+  <%= render "public/posts/posts", posts: @posts %>
+<% end %>

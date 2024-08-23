@@ -1,0 +1,5 @@
+<% if current_user.favorite?(post) %>
+  <%= link_to "お気に入りを解除", post_favorites_path(post), method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "お気に入りに追加", post_favorites_path(post), method: :post, class: "btn btn-primary" %>
+<% end %>

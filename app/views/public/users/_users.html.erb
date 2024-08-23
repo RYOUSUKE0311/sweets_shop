@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th><%= t "activerecord.attributes.user.name" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

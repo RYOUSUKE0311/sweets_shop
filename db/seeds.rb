@@ -9,5 +9,8 @@
 Admin.create!(email: 'admin@test.com', password: 'password')
 
 (1..10).each do |n|
-  User.create!(email: "user#{n}@test.com", password: "password")
+  user = User.create!(name: "user#{n}", email: "user#{n}@test.com", password: "password")
+  (0..rand(0..5)).each do |i|
+    user.posts.create!(title: "sample#{n}-#{i}", content: "#{"xxx"*rand(5..10)}\n"*rand(3..5))
+  end
 end

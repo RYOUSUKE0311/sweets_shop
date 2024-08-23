@@ -1,0 +1,17 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <th><%= t "activerecord.attributes.user.name" %></th>
+      <td><%= user.name %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "mypage", user_path(current_user), class: "btn btn-outline-primary btn-block" %>
+<%= link_to "favorites", favorites_user_path(current_user), class: "btn btn-outline-primary btn-block" %>
+<%= link_to "followings", followings_user_path(current_user), class: "btn btn-outline-primary btn-block" %>
+<%= link_to "followers", followers_user_path(current_user), class: "btn btn-outline-primary btn-block" %>
+
+<div class="my-4">
+  <%= render "public/relationships/follow_button", user: user if current_user != user %>
+</div>

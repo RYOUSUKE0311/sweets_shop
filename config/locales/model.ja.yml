@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: 店名
+        content: 投稿内容
+        image: 写真
+        adress: 住所
+    models:
+      post: スイーツ
