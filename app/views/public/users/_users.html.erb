@@ -9,8 +9,13 @@
     <% users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= link_to user.name, user_path(user) %></td>
+        <% if current_admin %>
+          <td><%= link_to user.name, admin_user_path(user) %></td>
+        <% else %>
+          <td><%= link_to user.name, user_path(user) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate users %>

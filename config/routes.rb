@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
-    root "home#top"
+    root "users#index"
     resources :users, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy]
   end
   
   scope module: :public do
     root "home#top"
+    get 'about', to: 'home#about'
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
       resource :relationships, only: [:create, :destroy]
       member do
@@ -24,10 +27,10 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
-      resources :comments, only: [:create]
+      resources :comments, only: [:index, :create]
     end
     get 'posts' => redirect("/")
-    resources :comments, only: [:edit, :update, :destroy]
+    resources :comments, only: [:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

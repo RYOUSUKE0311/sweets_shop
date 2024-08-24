@@ -4,6 +4,7 @@
       <th>画像</th>
       <th>タイトル</th>
       <th>詳細</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +19,17 @@
         </td>
         <td><%= link_to post.title, post_path(post) %></td>
         <td><%= post.content.truncate(20) %></td>
+        <td>
+          <% if current_admin %>
+            <% url = admin_post_path(post) %> 
+          <% elsif current_user == post.user %>
+            <% url = post_path(post) %>
+          <% end %>
+          <%= link_to "削除", url, method: :delete, 
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate posts %>

@@ -6,5 +6,9 @@ ja:
         content: 投稿内容
         image: 写真
         adress: 住所
+      comment:
+        content: コメント内容
+        created_at: 投稿日時
     models:
       post: スイーツ
+      comment: コメント

@@ -5,6 +5,7 @@
     <%= render "public/users/user_info", user: @user %>
   </div>
   <div class="col-md-8">
+    <%= render "public/posts/search_form", url: favorites_user_path(@user) %>
     <%= render"public/posts/posts", posts: @posts %>
   </div>
 </div>

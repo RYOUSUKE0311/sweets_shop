@@ -1,0 +1,9 @@
+<h1>投稿一覧</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= render "public/posts/search_form", url: admin_posts_path %>
+  </div>
+</div>
+
+<%= render "public/posts/posts", posts: @posts %>

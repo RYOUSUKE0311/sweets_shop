@@ -41,4 +41,11 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+  
+  def self.search(keyword)
+    if keyword.present?
+      self.where('name LIKE ?', "%#{keyword}%").or(
+      self.where('users.id LIKE ?', "%#{keyword}%"))
+    end
+  end
 end

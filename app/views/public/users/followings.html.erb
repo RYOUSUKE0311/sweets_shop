@@ -5,6 +5,7 @@
     <%= render "public/users/user_info", user: @user %>
   </div>
   <div class="col-md-8">
+    <%= render "public/users/search_form", url: followings_user_path(@user) %>
     <%= render"public/users/users", users: @users %>
   </div>
 </div>

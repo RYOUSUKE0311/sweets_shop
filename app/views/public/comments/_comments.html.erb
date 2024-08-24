@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t 'activerecord.attributes.user.name' %></th>
+      <th><%= t 'activerecord.attributes.comment.content' %></th>
+      <th><%= t 'activerecord.attributes.comment.created_at' %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.name %></td>
+        <td><%= simple_format comment.content %></td>
+        <td><%= l comment.created_at, format: :long %></td>
+        <td>
+          <% if current_admin %>
+            <% url = admin_comment_path(comment) %> 
+          <% elsif current_user == comment.user %>
+            <% url = comment_path(comment) %>
+          <% end %>
+          <%= link_to "削除", url, method: :delete, 
+              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

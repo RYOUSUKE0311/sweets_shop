@@ -9,6 +9,7 @@
       <%= render "public/posts/form", post: @post %>
     </div>
     <div class="col-md-8">
+      <%= render "public/posts/search_form", url: root_url %>
       <%= render "public/posts/posts", posts: @posts %>
     </div>
   </div>
