@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    @comment = current_user.comments.build
+    @comment = current_user.comments.build if current_user
     @comments = @post.comments.order(created_at: :desc)
   end
 
