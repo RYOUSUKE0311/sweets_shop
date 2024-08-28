@@ -14,7 +14,7 @@ class Public::CommentsController < ApplicationController
       flash[:notice] = "コメントしました"
       redirect_to post_path(@post)
     else
-      @comments = @post.comments.order(created_at: :desc)
+      @comments = @post.comments.order(created_at: :desc).page(params[:page])
       @average = @comments.where.not(star: nil).average(:star)
       flash.now[:alert] = "コメントに失敗しました"
       render 'public/posts/show'
