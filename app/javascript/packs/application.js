@@ -12,8 +12,6 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "jquery-raty-js";
-const images = require.context("../images", true);
-const imagePath = name => images(name, true);
 
 Rails.start()
 Turbolinks.start()
