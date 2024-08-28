@@ -55,14 +55,16 @@ class Public::UsersController < ApplicationController
     followers.each { |u| u.follow(@user) }
     posts.each { |post| @user.favorite(post) }
     
-    @user.posts.create!(
-      title: "爆弾アイス",
-      content: "いや・・量ｗ",
-      shop_name: "クレープ王",
-      price: 500,
-      sweetness: 4,
-      looks: 2,
-      cost_performance: 5)
+    if !@user.posts.any?
+      @user.posts.create!(
+        title: "爆弾アイス",
+        content: "いや・・量ｗ",
+        shop_name: "クレープ王",
+        price: 500,
+        sweetness: 4,
+        looks: 2,
+        cost_performance: 5)
+    end
     
     redirect_to root_path
   end
