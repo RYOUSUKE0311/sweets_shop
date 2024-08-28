@@ -55,7 +55,7 @@ class Public::UsersController < ApplicationController
     followers.each { |u| u.follow(@user) }
     posts.each { |post| @user.favorite(post) }
     
-    if !@user.posts.any?
+    if @user.posts.blank?
       @user.posts.create!(
         title: "爆弾アイス",
         content: "いや・・量ｗ",
