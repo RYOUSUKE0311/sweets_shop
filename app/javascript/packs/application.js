@@ -21,17 +21,17 @@ ActiveStorage.start()
 
 document.addEventListener("turbolinks:load", () => {
   const starInput = (model, params) => ({
-    starOn: "/images/star-on.png",
-    starOff: "/images/star-off.png",
-    starHalf: "/images/star-half.png",
+    starOn: "/star-on.png",
+    starOff: "/star-off.png",
+    starHalf: "/star-half.png",
     scoreName: `${model}[${params}]`,
     score: $(`#${params}Score`).data('star')
   })
   
   const starShow = (params) => ({ 
-    starOn: "/images/star-on.png",
-    starOff: "/images/star-off.png",
-    starHalf: "/images/star-half.png",
+    starOn: "/star-on.png",
+    starOff: "/star-off.png",
+    starHalf: "/star-half.png",
     score: $(`#star_show_${params}`).data('star'),
     readOnly: true
   })
