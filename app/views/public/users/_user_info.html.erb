@@ -13,5 +13,10 @@
 <%= link_to "フォローされた人一覧", followers_user_path(user), class: "btn btn-outline-primary btn-block" %>
 
 <div class="my-4">
-  <%= render "public/relationships/follow_button", user: user if current_user != user %>
+  <% if current_user && current_user != user %>
+    <%= render "public/relationships/follow_button", user: user %>
+  <% elsif current_user && current_user == user %>
+    <%= link_to "退会する", user_path(user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-block" %>
+  <% end %>
 </div>
+

@@ -2,6 +2,11 @@
 <p>お気に入りのスイーツを投稿できます。</p>
 <div class="border-bottom"></div>
 
+<% if !current_user %>
+  <p class="mt-4">ログインすると、投稿やレビューが出来ます。</p>
+  <%= link_to "ゲストログイン", guest_sign_in_path, method: :post, class: "btn btn-primary mb-2" %>
+<% end %>
+
 <h2 class="my-4">スイーツの新着投稿</h2>
 <% if current_user %>
   <div class="row">

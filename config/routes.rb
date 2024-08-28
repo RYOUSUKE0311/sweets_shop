@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         get :followers
       end
     end
+    post "guest_sign_in", to: "users#guest"
     resources :posts, only: [:show, :create, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:index, :create]
