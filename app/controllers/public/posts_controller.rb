@@ -5,7 +5,11 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = current_user.comments.build if current_user
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments
+    @average = @comments.where.not(star: nil).average(:star)
+    @comments = @comments.search(params[:keyword]) if params[:keyword].present?
+    @comments = @comments.where(star: params[:star]) if params[:star].present?
+    @comments = @comments.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def create
@@ -42,7 +46,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image)
+    params.require(:post).permit(:title, :shop_name, :price, :content, :image, :sweetness, :cost_performance, :looks)
   end
   
   def correct_user

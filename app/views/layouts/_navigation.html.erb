@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <a class="navbar-brand" href="/">Sweets Shop</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,37 +7,37 @@
     <ul class="navbar-nav">
       <% if current_user %>
          <li class="nav-item">
-          <%= link_to "users", users_path, class: "nav-link" %>
-        </li>    
-        <li class="nav-item">
-          <%= link_to "mypage", user_path(current_user), class: "nav-link" %>
+          <%= link_to "ユーザー一覧", users_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "favorites", favorites_user_path(current_user), class: "nav-link" %>
-        </li>  
-        <li class="nav-item">
-          <%= link_to "followings", followings_user_path(current_user), class: "nav-link" %>
+          <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "followers", followers_user_path(current_user), class: "nav-link" %>
+          <%= link_to "お気に入りスイーツ", favorites_user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "sign_out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "フォローしている人", followings_user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "フォローされた人", followers_user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% elsif current_admin %>
         <li class="nav-item">
-          <%= link_to "sign_out", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "sign_up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "sign_in", new_user_session_path, class: "nav-link" %>
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
       <li class="nav-item">
-        <%= link_to "about", about_path, class: "nav-link" %>
+        <%= link_to "SweetsShopとは", about_path, class: "nav-link" %>
       </li>
     </ul>
   </div>

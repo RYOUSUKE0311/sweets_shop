@@ -15,6 +15,7 @@ class Public::CommentsController < ApplicationController
       redirect_to post_path(@post)
     else
       @comments = @post.comments.order(created_at: :desc)
+      @average = @comments.where.not(star: nil).average(:star)
       flash.now[:alert] = "コメントに失敗しました"
       render 'public/posts/show'
     end
@@ -30,7 +31,7 @@ class Public::CommentsController < ApplicationController
   private
   
   def comment_params
-    params.require(:comment).permit(:content).merge(post_id: params[:post_id])
+    params.require(:comment).permit(:content, :star).merge(post_id: params[:post_id])
   end
   
   def correct_user

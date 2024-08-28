@@ -5,6 +5,7 @@ class Admin::CommentsController < ApplicationController
   def index
     @comments = Comment.all
     @comments = @comments.search(params[:keyword]) if params[:keyword].present?
+    @comments = @comments.where(star: params[:star]) if params[:star].present?
     @comments = @comments.order(created_at: :desc).page(params[:page]).per(15)
   end
   

@@ -1,8 +1,11 @@
 <div class="my-4">
   <%= form_with url: url, method: :get do |f| %>
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-6">
         <%= f.search_field :keyword, value: params[:keyword], placeholder: "キーワード検索", class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.select :star, (1..5).to_a, { include_blank: "評価で絞り込む", selected: params[:star] }, { class: "form-control"} %>
       </div>
       <div class="col-md-3">
         <%= f.submit "検索する", class: "btn btn-primary btn-block" %>

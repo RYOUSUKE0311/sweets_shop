@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th><%= t 'activerecord.attributes.user.name' %></th>
+      <th><%= t 'activerecord.attributes.comment.star' %></th>
       <th><%= t 'activerecord.attributes.comment.content' %></th>
       <th><%= t 'activerecord.attributes.comment.created_at' %></th>
       <th></th>
@@ -11,16 +12,19 @@
     <% comments.each do |comment| %>
       <tr>
         <td><%= comment.user.name %></td>
+        <td><%= comment.star.nil? ? "未評価" : comment.star.to_i %></td>
         <td><%= simple_format comment.content %></td>
         <td><%= l comment.created_at, format: :long %></td>
         <td>
           <% if current_admin %>
-            <% url = admin_comment_path(comment) %> 
+            <% url = admin_comment_path(comment) %>
           <% elsif current_user == comment.user %>
             <% url = comment_path(comment) %>
           <% end %>
-          <%= link_to "削除", url, method: :delete, 
-              data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          <% if current_admin || (current_user && current_user == comment.user) %>
+            <%= link_to "削除", url, method: :delete,
+                data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -2,12 +2,18 @@ ja:
   activerecord:
     attributes:
       post:
-        title: 店名
+        title: 商品名
         content: 投稿内容
         image: 写真
         adress: 住所
+        shop_name: 店名
+        price: 料金
+        looks: 映え度
+        sweetness: 甘さ
+        cost_performance: コスパ
       comment:
         content: コメント内容
+        star: 評価
         created_at: 投稿日時
     models:
       post: スイーツ

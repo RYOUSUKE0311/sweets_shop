@@ -2,7 +2,11 @@
   <%= form_with model: [post, comment] do |f| %>
     <%= render "layouts/error_messages", model: f.object %>
     <div class="mb-3">
-      <%= f.text_area :content, rows: 4, placeholder: "ショップに対するコメントを書く事ができます。", class: "form-control" %>
+      <%= f.label :star %>
+      <div id="star_comment"></div>
+    </div>
+    <div class="mb-3">
+      <%= f.text_area :content, rows: 4, placeholder: "同じものを食べた人は感想を書くことができます。", class: "form-control" %>
     </div>
     <%= f.submit "コメントする", class: "btn btn-primary btn-block" %>
   <% end %>
