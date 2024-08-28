@@ -19,7 +19,8 @@ class Public::PostsController < ApplicationController
       redirect_to root_url
     else
       flash.now[:alert] = "投稿に失敗しました"
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.all
+      @posts = @posts.order(created_at: :desc).page(params[:page]).per(15)
       render "public/home/top"
     end
   end
