@@ -12,6 +12,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "jquery-raty-js";
+const images = require.context("../images", true);
+const imagePath = name => images(name, true);
 
 Rails.start()
 Turbolinks.start()
@@ -19,17 +21,17 @@ ActiveStorage.start()
 
 document.addEventListener("turbolinks:load", () => {
   const starInput = (model, params) => ({
-    starOn: "/star-on.png",
-    starOff: "/star-off.png",
-    starHalf: "/star-half.png",
+    starOn: "/images/star-on.png",
+    starOff: "/images/star-off.png",
+    starHalf: "/images/star-half.png",
     scoreName: `${model}[${params}]`,
     score: $(`#${params}Score`).data('star')
   })
   
   const starShow = (params) => ({ 
-    starOn: "/star-on.png",
-    starOff: "/star-off.png",
-    starHalf: "/star-half.png",
+    starOn: "/images/star-on.png",
+    starOff: "/images/star-off.png",
+    starHalf: "/images/star-half.png",
     score: $(`#star_show_${params}`).data('star'),
     readOnly: true
   })
